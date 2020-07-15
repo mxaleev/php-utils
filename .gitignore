@@ -1,0 +1,29 @@
+# IDE
+/.idea
+
+# Other files
+.DS_Store
+Thumbs.db
+
+# Cache
+.sass-cache/
+
+# Let's Encrypt
+.well-known
+
+# SEO Tools
+/robots.txt
+/sitemap*.xml
+
+# Analytics Tools
+/google*.html
+/mailru-verification*.html
+/yandex_*.html
+
+# Bitrix
+/upload/
+/bitrix/
+
+# Project
+/local/classes/Xaleev/Utils/
+/_mx-devs
