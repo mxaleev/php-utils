@@ -40,6 +40,12 @@ class CaseLetters
         // Очистка пробелов в начале и в конце строки
         $result = trim($input);
 
+        // Очистка всего кроме букв и цифр
+        $result = preg_replace("/[^a-zA-ZА-Яа-я0-9\s]/iu", '', $input);
+
+        // Замена пробелов на тире
+        $result = preg_replace("/ /iu", '-', $result);
+
         // Преобразование в верный формат регистра
         $result = mb_strtolower($result);
 
