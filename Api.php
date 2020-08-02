@@ -49,4 +49,30 @@ class Api
 
     }
 
+    /**
+     * @param $httpMethod
+     * @return string
+     */
+    public static function GetActionNameByMethod($httpMethod)
+    {
+
+        switch ($httpMethod)
+        {
+            case 'POST':
+                $actionName = 'actionCreate';
+                break;
+            case 'PUT':
+                $actionName = 'actionUpdate';
+                break;
+            case 'DELETE':
+                $actionName = 'actionDelete';
+                break;
+            default:
+                $actionName = 'actionIndex';
+                break;
+        }
+
+        return $actionName;
+    }
+
 }
