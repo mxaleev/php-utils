@@ -25,7 +25,7 @@ class Morphology
     public static function getCountYears($count, $withDigital = true)
     {
         $arData = ['год', 'года', 'лет', 'года'];
-        return self::cardinal($count, $arData, $withDigital);
+        return self::GetCardinal($count, $arData, $withDigital);
     }
 
 
@@ -37,7 +37,7 @@ class Morphology
     public static function getCountMonths($count, $withDigital = true)
     {
         $arData = ['месяц', 'месяца', 'месяцев', 'месяца'];
-        return self::cardinal($count, $arData, $withDigital);
+        return self::GetCardinal($count, $arData, $withDigital);
     }
 
 
@@ -49,17 +49,41 @@ class Morphology
     public static function getCountDays($count, $withDigital = true)
     {
         $arData = ['день', 'дня', 'дней', 'дня'];
-        return self::cardinal($count, $arData, $withDigital);
+        return self::GetCardinal($count, $arData, $withDigital);
     }
 
-
+    
     /**
      * @param $count
      * @param $data
      * @param bool $withDigital
      * @return mixed|string
      */
-    private static function cardinal($count, $data, $withDigital = true)
+    private static function GetCardinal($count, $data, $withDigital = true)
+    {
+        $cardinal = self::cardinal($count);
+
+        $word = $data[$cardinal];
+
+        if ($withDigital)
+        {
+            $result = "$count $word";
+        }
+        else
+        {
+            $result = $word;
+        }
+
+        return $result;
+
+    }
+
+
+    /**
+     * @param $count
+     * @return int
+     */
+    private static function cardinal($count)
     {
         $mod10  = $count % 10;
         $mod100 = $count % 100;
@@ -81,18 +105,7 @@ class Morphology
             $type = 3;
         }
 
-        $word = $data[$type];
-
-        if ($withDigital)
-        {
-            $result = "$count $word";
-        }
-        else
-        {
-            $result = $word;
-        }
-
-        return $result;
+        return $type;
     }
 
 }
